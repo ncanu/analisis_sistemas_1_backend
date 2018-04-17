@@ -47,14 +47,14 @@ task ('deploy', dependsOn: 'war', type:Exec)
 {
         workingDir "${serverHome}${File.separator}bin"
 
-               if (System.properties['os.name'].toLowerCase().contains('windows'))
-           {
-                   commandLine 'cmd', '/c', 'asadmin.bat'
-           }
+        if (System.properties['os.name'].toLowerCase().contains('windows'))
+        {
+                commandLine 'cmd', '/c', 'asadmin.bat'
+        }
         else
-       {
+        {
                commandLine "./asadmin"
-       }
+        }
 
                args "deploy", "--force=true", "--virtualservers=server", "${war.archivePath}"
 }

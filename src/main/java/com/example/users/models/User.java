@@ -1,5 +1,6 @@
 package com.example.users.models;
 
+import com.example.common.utils.BaseModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -20,12 +21,8 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "user")
-public class User
+public class User extends BaseModel
 {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(name = "email")
     private String email;
