@@ -34,4 +34,14 @@ public class User extends BaseModel
     @Column(name = "date_creation")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+
+    @Column(name = "carnet")
+    private String carnet;
 }
