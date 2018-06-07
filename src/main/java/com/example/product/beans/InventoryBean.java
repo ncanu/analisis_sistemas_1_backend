@@ -30,4 +30,14 @@ public class InventoryBean {
     {
         return db.createNamedQuery("All inventory by warehouse", Inventory.class).setParameter("warehouseId",warehouseId).getResultList();
     }
+
+    public void persistInventory(Inventory inventory)
+    {
+        db.persist(inventory);
+    }
+
+    public void persistProduct(Product product)
+    {
+        db.persist(product);
+    }
 }

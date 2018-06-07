@@ -22,4 +22,12 @@ public class RegisterRequest
     @JsonProperty
     private String password;
 
+    @NotNull
+    @JsonProperty
+    private String name;
+
+    @NotNull
+    @JsonProperty
+    private String lastName;
+
 }

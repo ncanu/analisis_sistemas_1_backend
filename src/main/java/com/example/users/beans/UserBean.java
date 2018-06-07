@@ -47,12 +47,14 @@ public class UserBean
         return user;
     }
 
-    public User add(String email, String password)
+    public User add(String email, String password, String name, String lastName)
     {
         User user = new User();
         user.setEmail(email);
         user.setPassword(Hash.createPassword(password));
         user.setCreatedAt(new Date());
+        user.setName(name);
+        user.setLastName(lastName);
 
         db.persist(user);
         return user;

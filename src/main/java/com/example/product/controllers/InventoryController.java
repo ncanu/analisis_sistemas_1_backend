@@ -10,6 +10,7 @@ import com.example.users.models.User;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
@@ -55,5 +56,19 @@ public class InventoryController {
             response.add(inventoryResponse);
         }
         return response;
+    }
+
+    @POST
+    @Path("/inventory")
+    public Inventory addInventory(@Valid InventoryRequest request)
+    {
+        Inventory inventory = new Inventory();
+        inventory.setCost(request.getCost());
+        inventory.setPrice(request.getPrice());
+        inventory.setProductId(request.getProduct());
+        inventory.setWarehouseId(request.getWarehouse());
+        inventory.setQuantity(request.getQuantity());
+        inventoryBean.persistInventory(inventory);
+        return inventory;
     }
 }

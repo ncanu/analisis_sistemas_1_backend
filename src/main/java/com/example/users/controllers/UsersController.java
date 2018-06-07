@@ -104,7 +104,7 @@ public class UsersController
         {
             throw new WSException("A registered user already exists with this email");
         }
-        user = userBean.add(request.getEmail(), request.getPassword());
+        user = userBean.add(request.getEmail(), request.getPassword(),request.getName(),request.getLastName());
         return user;
     }
 
