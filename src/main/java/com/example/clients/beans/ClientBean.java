@@ -23,6 +23,11 @@ public class ClientBean {
         return db.createNamedQuery("All Clients", Client.class).getResultList();
 
     }
+
+    public void persistClient(Client client)
+    {
+        db.persist(client);
+    }
 }
 
 

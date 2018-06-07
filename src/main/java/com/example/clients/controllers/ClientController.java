@@ -10,10 +10,8 @@ import com.example.users.models.User;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.validation.Valid;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Properties;
@@ -42,6 +40,22 @@ public class ClientController {
     public List<Client> allUsers()
     {
         return clientBean.all();
+    }
+
+    @POST
+    @Path("/client")
+    public Client createClient(@Valid ClientRequest request)
+    {
+        Client client = new Client();
+        client.setAddress(request.getAddress());
+        client.setEmail(request.getEmail());
+        client.setLastName(request.getLastName());
+        client.setName(request.getName());
+        client.setNit(request.getNit());
+        client.setPhone(request.getPhone());
+        client.setStatus(true);
+        clientBean.persistClient(client);
+        return client;
     }
 
 }
