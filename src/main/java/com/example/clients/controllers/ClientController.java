@@ -58,4 +58,20 @@ public class ClientController {
         return client;
     }
 
+    @POST
+    @Path("/client/edit")
+    public Client editClient(@Valid ClientRequest request)
+    {
+        Client client = new Client();
+        client.setAddress(request.getAddress());
+        client.setEmail(request.getEmail());
+        client.setLastName(request.getLastName());
+        client.setName(request.getName());
+        client.setNit(request.getNit());
+        client.setPhone(request.getPhone());
+        client.setStatus(true);
+        clientBean.mergeClient(client);
+        return client;
+    }
+
 }

@@ -19,14 +19,17 @@ public class ClientBean {
 
     public List<Client> all()
     {
-
         return db.createNamedQuery("All Clients", Client.class).getResultList();
-
     }
 
     public void persistClient(Client client)
     {
         db.persist(client);
+    }
+
+    public void mergeClient(Client client)
+    {
+        db.merge(client);
     }
 }
 
