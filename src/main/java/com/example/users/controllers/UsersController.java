@@ -1,5 +1,7 @@
 package com.example.users.controllers;
 
+import com.example.bank.beans.BankBean;
+import com.example.bank.models.Bank;
 import com.example.common.exceptions.ws.WSException;
 import com.example.common.utils.Hash;
 import com.example.common.utils.properties.PropertiesFromFile;
@@ -39,6 +41,9 @@ public class UsersController
     @EJB
     UserBean userBean;
 
+    @EJB
+    BankBean bankBean;
+
     @Inject
     @AuthenticatedUser
     User user;
@@ -74,6 +79,7 @@ public class UsersController
         LoginResponse response = new LoginResponse();
         response.setToken(token);
         response.setLoginTime(new Date());
+        response.setUser(user);
 
         return response;
     }
@@ -103,6 +109,14 @@ public class UsersController
         }
         userBean.remove(id);
         return "User successfully deleted";
+    }
+
+    @GET
+    @Secured
+    @Path("/banks")
+    public List<Bank> allBanks()
+    {
+        return bankBean.all();
     }
 
 }

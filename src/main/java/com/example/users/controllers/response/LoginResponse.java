@@ -1,5 +1,6 @@
 package com.example.users.controllers.response;
 
+import com.example.users.models.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -16,5 +17,8 @@ public class LoginResponse
 
     @JsonProperty
     private Date loginTime;
+
+    @JsonProperty
+    User user;
 
 }
