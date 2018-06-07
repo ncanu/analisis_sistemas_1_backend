@@ -7,6 +7,8 @@ import com.example.common.utils.Hash;
 import com.example.common.utils.properties.PropertiesFromFile;
 import com.example.common.validators.auth.user.AuthenticatedUser;
 import com.example.common.validators.auth.user.Secured;
+import com.example.registry.beans.RegistryBean;
+import com.example.registry.models.Registry;
 import com.example.users.beans.UserBean;
 import com.example.users.controllers.request.LoginRequest;
 import com.example.users.controllers.request.RegisterRequest;
@@ -48,6 +50,9 @@ public class UsersController
     @AuthenticatedUser
     User user;
 
+    @EJB
+    RegistryBean registryBean;
+
     @GET
     @Secured
     public List<User> allUsers()
@@ -81,6 +86,12 @@ public class UsersController
         response.setLoginTime(new Date());
         response.setUser(user);
 
+        Registry registry = new Registry();
+        registry.setDate(new Date());
+        registry.setLogin(true);
+        registry.setDescription("El usuario inició sesión en el sistema");
+        registry.setUserId(user.getId());
+        registryBean.persistRegistry(registry);
         return response;
     }
 
