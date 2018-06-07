@@ -34,6 +34,7 @@ public class WarehouseController {
         warehouse.setCode(warehouseRequest.getCode());
         warehouse.setName(warehouseRequest.getName());
         warehouse.setStatus(true);
+        warehouse.setLocal(warehouseRequest.getLocal());
         warehouseBean.persistWarehouse(warehouse);
         return warehouse;
     }

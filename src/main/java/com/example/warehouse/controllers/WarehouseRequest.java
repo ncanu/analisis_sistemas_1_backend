@@ -13,6 +13,6 @@ public class WarehouseRequest {
     private String code;
 
     @JsonProperty
-    private String status;
+    private String local;
 
 }
