@@ -1,6 +1,7 @@
 package com.example.users.beans;
 
 import com.example.common.utils.Hash;
+import com.example.common.utils.RandomGenerator;
 import com.example.users.models.User;
 
 import javax.ejb.Local;
@@ -55,6 +56,7 @@ public class UserBean
         user.setCreatedAt(new Date());
         user.setName(name);
         user.setLastName(lastName);
+        user.setCarnet(RandomGenerator.randomAlphanumeric(10));
 
         db.persist(user);
         return user;
