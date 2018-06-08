@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @NamedQueries
         ({
@@ -29,4 +30,8 @@ public class Product extends BaseModel {
     @Column(name = "measurement")
     @JsonProperty
     private String measurement;
+
+    @Column(name = "price")
+    @JsonProperty
+    private BigDecimal price;
 }
